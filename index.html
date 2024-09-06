@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter for You</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Intro Screen */
+        .intro-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100; /* Make sure it's on top */
+            text-align: center;
+        }
+
+        .intro-container h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .intro-container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff9999;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .intro-container button:hover {
+            background-color: #ff6666;
+        }
+
+        /* Letter Container */
+        .letter-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 20px; /* Space between letter and gallery */
+            display: none; /* Initially hidden */
+        }
+
+        h1 {
+            color: #ff9999;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #888;
+        }
+
+        .heart {
+            font-size: 40px;
+            color: #ff6666;
+            margin-bottom: 20px;
+        }
+
+        /* Continue Button */
+        .continue-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff9999;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .continue-btn:hover {
+            background-color: #ff6666;
+        }
+
+        /* Gallery Styling */
+        .slideshow-container {
+            max-width: 500px;
+            position: relative;
+            margin: auto;
+            display: none; /* Initially hidden */
+        }
+
+        .mySlides {
+            display: none;
+            position: relative;
+        }
+
+        .mySlides img {
+            width: 100%;
+            border-radius: 90px;
+            max-height: 600px; /* Limit image height */
+            object-fit: cover; /* Crop the image if too large */
+            border: 5px solid #ff9999; /* Add a frame */
+            padding: 5px; /* Add space between image and border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+        }
+
+        /* Caption Styling */
+        .caption {
+            color: #ff6666;
+            font-size: 18px;
+            padding: 8px 12px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Animation */
+        .fade {
+            animation: fade 1.5s ease-in-out;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* Dots/Indicators */
+        .dot-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #ff9999;
+        }
+
+        /* Exit Container */
+        .exit-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .exit-container p {
+            font-size: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intro Screen -->
+    <div class="intro-container" id="intro">
+        <h1>I will always love you</h1>
+        <button onclick="showLetter()">Read the Letter</button>
+    </div>
+
+    <!-- Letter Container -->
+    <div class="letter-container" id="letter">
+        <div class="heart">❤️</div>
+        <h1>To You, My Love</h1>
+        <p>
+            Thank you for everything—the time we’ve spent together, the memories we’ve created, and the love you’ve shown me. I cherish every moment with you.<br><br>
+            You have been the one to show me what real love feels like. No matter where life takes us or how far apart we are, I will always hold onto these feelings. <br><br>
+            Our story has taught me so much about love, and I’m forever grateful to have met you. No matter the distance or the challenges, you are always close to my heart. You were the first to make me believe in love, and that will never change.<br><br>
+            I hope you know that no matter what, I’m always here for you. Take care of yourself, and always remember that you are deeply loved.
+        </p>
+        <div class="signature">- Glena</div>
+
+        <!-- Continue Button -->
+        <button class="continue-btn" onclick="showSlideshow()">Continue</button>
+    </div>
+
+    <!-- Slideshow container -->
+    <div class="slideshow-container" id="slideshow">
+        <!-- Slides with Captions Below the Pictures -->
+        <div class="mySlides fade">
+            <img src="image1.jpg" alt="Image 1">
+            <div class="caption">Distance didn’t stop you from making my birthday unforgettable. Thank you for all the love and effort! 🎉💕</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image2.jpg" alt="Image 2">
+            <div class="caption">I’ll forever cherish the days you put my well-being first. Thank you. 💖</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image3.jpg" alt="Image 3">
+            <div class="caption"> I’m not afraid to tell the world that you were my boyfriend. I never hid you from anyone, and I’m proud of the time we shared.</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image4.jpg" alt="Image 4">
+            <div class="caption">Even with time and distance, my love for you will never fade. 💕</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image5.jpg" alt="Image 5">
+            <div class="caption">I love your wallpaper on your phone here, You will always have a piece of my heart, no matter what. 💓</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image6.jpg" alt="Image 6">
+            <div class="caption">I wrote your name in the sand, knowing that while the waves may wash it away, the love remains. </div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image7.jpg" alt="Image 7">
+            <div class="caption">Though we’re not together right now, my support and love for you remain constant. 💕</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image8.jpg" alt="Image 8">
+            <div class="caption">Every time I see my name on your phone, it takes me back to those days we were inseparable.</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image9.jpg" alt="Image 9">
+            <div class="caption">The days we spent talking and playing games are memories I cherish deeply and miss so much.</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="image10.jpg" alt="Image 10">
+            <div class="caption">Thank you for being a part of my life. If I ever said something hurtful, please know it wasn’t intended that way. We’ve been through so much together, and I’m truly grateful for everything. 💞</div>
+        </div>
+    </div>
+
+    <!-- Dots/Indicators -->
+    <div class="dot-container" id="dot-container" style="display:none;">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <!-- Exit Button -->
+    <div class="exit-container" id="exit">
+        <p>I will always love you no matter what. Thank you for everything.</p>
+        <button class="continue-btn" onclick="exitSlideshow()">Exit</button>
+    </div>
+
+    <script>
+        function showLetter() {
+            // Hide the intro and show the letter
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("letter").style.display = "block";
+        }
+
+        function showSlideshow() {
+            // Hide the letter and show the slideshow
+            document.getElementById("letter").style.display = "none";
+            document.getElementById("slideshow").style.display = "block";
+            document.getElementById("dot-container").style.display = "block";
+            showSlides(); // Start the slideshow
+        }
+
+        function exitSlideshow() {
+            // Hide the slideshow and dots, show the exit message
+            document.getElementById("slideshow").style.display = "none";
+            document.getElementById("dot-container").style.display = "none";
+            document.getElementById("exit").style.display = "block";
+        }
+
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+                exitSlideshow(); // End the slideshow and show the exit message
+                return;
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+    </script>
+
+</body>
+</html>
